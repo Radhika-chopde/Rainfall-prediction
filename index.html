@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rainfall Prediction App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>🌧️ Rainfall Prediction App</h1>
+        <p>Enter today's weather conditions below to know whether it will rain.</p>
+
+        <form method="post" action="/predict">
+            <label>Min Temperature (°C)</label>
+            <input type="number" step="any" name="MinTemp" required>
+
+            <label>Max Temperature (°C)</label>
+            <input type="number" step="any" name="MaxTemp" required>
+
+            <label>Rainfall (mm)</label>
+            <input type="number" step="any" name="Rainfall" required>
+
+            <label>Humidity at 9AM (%)</label>
+            <input type="number" step="any" name="Humidity9am" required>
+
+            <label>Humidity at 3PM (%)</label>
+            <input type="number" step="any" name="Humidity3pm" required>
+
+            <label>Wind Speed at 9AM (km/h)</label>
+            <input type="number" step="any" name="WindSpeed9am" required>
+
+            <label>Wind Speed at 3PM (km/h)</label>
+            <input type="number" step="any" name="WindSpeed3pm" required>
+
+            <button type="submit">Predict</button>
+        </form>
+
+        {% if prediction_text %}
+            <div class="result">
+                <h3>{{ prediction_text }}</h3>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
